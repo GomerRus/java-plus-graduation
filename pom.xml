@@ -30,6 +30,10 @@
 		<spring-cloud-dependencies.version>2023.0.3</spring-cloud-dependencies.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<maven-compiler-plugin.version>3.11.0</maven-compiler-plugin.version>
+		<maprstruct.version>1.6.2</maprstruct.version>
+		<querydsl.version>5.1.0</querydsl.version>
+		<stats-client.version>0.0.1-SNAPSHOT</stats-client.version>
+		<stats-dto.version>0.0.1-SNAPSHOT</stats-dto.version>
 	</properties>
 
 	<dependencyManagement>
@@ -48,6 +52,32 @@
 			<type>pom</type>
 			<scope>import</scope>
 		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct</artifactId>
+			<version>${maprstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.mapstruct</groupId>
+			<artifactId>mapstruct-processor</artifactId>
+			<version>${maprstruct.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>com.querydsl</groupId>
+			<artifactId>querydsl-jpa</artifactId>
+			<classifier>jakarta</classifier>
+			<version>${querydsl.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.practicum</groupId>
+			<artifactId>stats-client</artifactId>
+			<version>${stats-client.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>ru.practicum</groupId>
+			<artifactId>stats-dto</artifactId>
+			<version>${stats-dto.version}</version>
+		</dependency>
 	</dependencies>
 	</dependencyManagement>
 	<build>
@@ -55,8 +85,12 @@
 			<plugins>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
-					<artifactId>maven-compiler-plugin</artifactId>
-					<version>${maven-compiler-plugin.version}</version>
+					<artifactId>maven-surefire-plugin</artifactId>
+					<configuration>
+						<systemPropertyVariables>
+							<spring.profiles.active>test</spring.profiles.active>
+						</systemPropertyVariables>
+					</configuration>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>

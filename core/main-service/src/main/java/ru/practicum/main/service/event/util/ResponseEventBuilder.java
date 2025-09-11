@@ -42,6 +42,7 @@ public class ResponseEventBuilder {
 
     public <T extends ResponseEvent> T buildOneEventResponseDto(Event event, Class<T> type) {
         T dto;
+
         if (type == EventFullDto.class) {
             EventFullDto dtoTemp = eventMapper.toEventFullDto(event);
             dto = type.cast(dtoTemp);
@@ -49,6 +50,7 @@ public class ResponseEventBuilder {
             EventShortDto dtoTemp = eventMapper.toEventShortDto(event);
             dto = type.cast(dtoTemp);
         }
+
         long eventId = event.getId();
         LocalDateTime created = event.getCreatedOn();
 
@@ -60,6 +62,7 @@ public class ResponseEventBuilder {
 
     public <T extends ResponseEvent> List<T> buildManyEventResponseDto(List<Event> events, Class<T> type) {
         Map<Long, T> dtoById = new HashMap<>();
+
         for (Event event : events) {
             if (type == EventFullDto.class) {
                 EventFullDto dtoTemp = eventMapper.toEventFullDto(event);
@@ -69,8 +72,11 @@ public class ResponseEventBuilder {
                 dtoById.put(event.getId(), type.cast(dtoTemp));
             }
         }
+
         getManyEventsConfirmedRequests(dtoById.keySet()).forEach(req ->
                 dtoById.get(req.eventId()).setConfirmedRequests(req.countRequests()));
+
+
         getManyEventsViews(dtoById.keySet()).forEach(stats -> {
             Long id = Long.parseLong(stats.getUri().replace("/events/", ""));
             dtoById.get(id).setViews(stats.getHits());
@@ -107,6 +113,7 @@ public class ResponseEventBuilder {
                 statParam.getUris(),
                 statParam.getUnique()
         );
+
         log.debug("Статистика пустая = {} . Одиночный от статистики по запросу uris = {}, start = {}, end = {}",
                 viewStats.isEmpty(),
                 statParam.getUris(),
@@ -129,17 +136,20 @@ public class ResponseEventBuilder {
         List<String> uris = eventIds.stream()
                 .map(id -> "/events/" + id)
                 .toList();
+
         StatParam statParam = StatParam.builder()
                 .start(MIN_START_DATE)
                 .end(LocalDateTime.now().plusMinutes(1))
                 .unique(true)
                 .uris(uris)
                 .build();
+
         List<ViewStatsDto> viewStats = statsClient.getStat(statParam.getStart(),
                 statParam.getEnd(),
                 statParam.getUris(),
                 statParam.getUnique()
         );
+
         log.debug("Получен ответ size = {}, массовый от статистики по запросу uris = {}, start = {}, end = {}",
                 viewStats.size(),
                 statParam.getUris(),
