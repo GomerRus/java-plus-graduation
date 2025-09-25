@@ -45,5 +45,4 @@ public class StatsController {
         log.info("Информация сохранена. POST /hit отработал без ошибок");
         return new ResponseEntity<>("Информация сохранена", HttpStatus.CREATED);
     }
-
 }
