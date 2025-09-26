@@ -7,7 +7,7 @@ import org.springframework.cloud.openfeign.EnableFeignClients;
 
 @SpringBootApplication
 @ConfigurationPropertiesScan
-@EnableFeignClients
+@EnableFeignClients(basePackages = {"client", "ru.yandex.practicum.feign"})
 public class RequestServiceApplication {
     public static void main(String[] args) {
         SpringApplication.run(RequestServiceApplication.class, args);
