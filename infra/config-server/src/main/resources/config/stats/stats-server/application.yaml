@@ -1,0 +1,21 @@
+server:
+  port: 0
+
+spring:
+  datasource:
+    driverClassName: org.postgresql.Driver
+    url: jdbc:postgresql://localhost:6432/stats
+    username: stats
+    password: stats
+  sql:
+    init:
+      mode: always
+
+hibernate:
+  show_sql: FALSE
+  jdbc:
+    time_zone: UTC
+
+discovery:
+  stats:
+    stats-server-id: stats-service

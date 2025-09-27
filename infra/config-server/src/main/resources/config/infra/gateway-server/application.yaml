@@ -1,0 +1,34 @@
+spring:
+  cloud:
+    gateway:
+      discovery.locator.enabled: true
+      routes:
+        - id: comment_service_route
+          uri: lb://comment-service
+          predicates:
+            - Path=/admin/comments/**, /comments/**
+
+        - id: user_service_route
+          uri: lb://user-service
+          predicates:
+            - Path=/admin/users/**
+
+        - id: request_service_route
+          uri: lb://request-service
+          predicates:
+            - Path=/users/{userId}/requests/**
+
+        - id: event_service_route
+          uri: lb://event-service
+          predicates:
+            - Path=/admin/categories/**, /categories/**, /admin/compilations/**, /compilations/**, /admin/events/**, /events/**, /users/{userId}/events/**
+
+server:
+  port: 8080
+
+logging:
+  level:
+    org:
+      springframework:
+        cloud:
+          gateway: DEBUG

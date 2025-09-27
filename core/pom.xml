@@ -4,20 +4,25 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
-        <groupId>ru.practicum</groupId>
+        <groupId>ru.yandex.practicum</groupId>
         <artifactId>explore-with-me</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
+    <groupId>ru.yandex.practicum</groupId>
     <artifactId>core</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>main-service</module>
+        <module>interaction-api</module>
+        <module>event-service</module>
+        <module>request-service</module>
+        <module>user-service</module>
+        <module>comment-service</module>
     </modules>
 
     <properties>
-        <maven.compiler.source>21</maven.compiler.source>
-        <maven.compiler.target>21</maven.compiler.target>
+        <maven.compiler.source>22</maven.compiler.source>
+        <maven.compiler.target>22</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
