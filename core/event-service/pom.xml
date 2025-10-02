@@ -12,8 +12,8 @@
     <artifactId>event-service</artifactId>
 
     <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
+        <maven.compiler.source>21</maven.compiler.source>
+        <maven.compiler.target>21</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -22,6 +22,10 @@
             <groupId>ru.yandex.practicum</groupId>
             <artifactId>stats-client</artifactId>
             <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>ru.yandex.practicum</groupId>
+            <artifactId>proto-schemas</artifactId>
         </dependency>
         <dependency>
             <groupId>ru.yandex.practicum</groupId>

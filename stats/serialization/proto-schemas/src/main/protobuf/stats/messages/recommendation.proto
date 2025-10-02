@@ -1,0 +1,26 @@
+syntax = "proto3";
+
+package stats.message;
+
+option java_package = "ru.practicum.ewm.stats.proto";
+option java_multiple_files = true;
+
+message InteractionsCountRequestProto {
+  repeated int64 event_id = 1;
+}
+
+message RecommendedEventProto {
+  int64 event_id = 1;
+  double score = 2;
+}
+
+message SimilarEventsRequestProto {
+  int64 event_id = 1;
+  int64 user_id = 2;
+  int32 max_results = 3;
+}
+
+message UserPredictionsRequestProto {
+  int64 user_id = 1;
+  int32 max_results = 2;
+}
