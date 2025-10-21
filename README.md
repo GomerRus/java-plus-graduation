@@ -75,4 +75,21 @@ ExploreWithMe – это платформа для поиска и органи�
 Все конфигурации для микросервисов хранятся централизованно в **Config Server**. Взаимодействие настроено через Spring Cloud Config, который обеспечивает динамическое получение конфигурации.
 
 ---
+## Технологии:
 
+- Java 21
+- Spring Boot 3.3.2
+- PostgreSQL
+- Spring Data JPA
+- Hibernate ORM
+- Apache Kafka
+- Apache Avro
+- Protocol Buffers
+- gRPC
+- Spring Cloud Config
+- Spring Cloud Eureka
+- Spring Cloud Feign
+- Spring Cloud Gateway
+- Spring Cloud Load Balancer
+
+---
